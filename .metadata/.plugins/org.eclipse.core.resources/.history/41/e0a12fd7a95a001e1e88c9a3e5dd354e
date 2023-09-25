@@ -1,0 +1,46 @@
+package com.amdocs.DMS.model;
+
+import java.util.Date;
+
+public class DoctorEntity {
+    private int id;
+    private String Name;
+    private String phoneNumber;
+    private String specialization;
+    private double consultation_fees;
+    private String availability;
+    
+
+    // Constructors
+    public DoctorEntity() {
+    }
+
+    public DoctorEntity(String Name, String phoneNumber, String specialization,double consultation_fees , String availability) {
+        this.Name = Name; 
+        this.phoneNumber = phoneNumber;
+        this.specialization = specialization;
+        this.consultation_fees = consultation_fees;
+        this.availability = availability;
+       
+    }
+
+    // Getters and setters for all attributes
+    // ...
+
+    // Additional methods
+    public String getFullName() {
+        return Name ;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor ID: " + id + "\n" +
+               "Full Name: " + getFullName() + "\n" +
+               
+               "Phone Number: " + phoneNumber + "\n" +
+               "Specialization: " + specialization + "\n" +
+               "Consultation Fees : " + consultation_fees+ "\n"+
+               "Availability :" + availability + "\n";
+              
+    }
+}

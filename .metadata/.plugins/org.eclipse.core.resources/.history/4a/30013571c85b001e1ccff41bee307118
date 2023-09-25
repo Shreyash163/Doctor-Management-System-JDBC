@@ -1,0 +1,9 @@
+package com.amdocs.DMS.exception;
+
+public class InvalidInputforAvailability extends Exception  {
+	public InvalidInputforAvailability(String str)
+	{
+		super(str);
+	}
+
+}

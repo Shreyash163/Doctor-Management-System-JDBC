@@ -1,0 +1,11 @@
+package com.amdocs.DMS.main;
+
+
+import  com.amdocs.DBConnection.DbConnection;
+
+public class Main {
+	public static void main(String[] args) throws Exception {
+		System.out.println("inside main");
+		new DbConnection();
+	}
+}

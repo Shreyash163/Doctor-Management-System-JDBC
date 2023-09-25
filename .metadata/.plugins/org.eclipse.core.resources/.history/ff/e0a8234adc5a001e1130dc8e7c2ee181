@@ -1,0 +1,68 @@
+package com.amdocs.DMS.main;
+
+
+import  com.amdocs.DBConnection.DbConnection;
+import  com.amdocs.DBConnection.DoctorFunctions;
+import java.sql.*;
+
+
+import java.util.Scanner;
+
+public class Main {
+	
+
+    public static void main(String[] args) {
+    	
+		DbConnection dbConnect =	new DbConnection();
+		
+		
+    	Connection con1 = dbConnect.getConnection();
+    	System.out.println(con1);
+    	PreparedStatement st =null;
+        try {
+        	System.out.println("inside main");
+    		
+
+    		 Scanner scanner = new Scanner(System.in);
+             
+             while (true) {
+                 System.out.println("Doctor Management System");
+                 System.out.println("1. Add Doctor");
+                 System.out.println("2. View All Doctors");
+                 System.out.println("3. Search Doctors by Availability");
+                 System.out.println("4. Exit");
+                 System.out.print("Select an option: ");
+                 int choice = scanner.nextInt();
+                 scanner.nextLine(); // Consume the newline character
+                 
+                 switch (choice) {
+                     case 1:
+                        DoctorFunctions.addDoctor(con1, scanner);
+                         break;
+                    case 2:
+                         DoctorFunctions.viewALLDoctors(con1);
+                         break;
+                     /*case 3:
+                         searchDoctorsByAvailability(st, scanner);
+                         break;
+                         */
+                     case 4:
+                         con1.close();
+                         System.out.println("Exiting...");
+                         return;
+                     default:
+                         System.out.println("Invalid option. Please try again.");
+                         break;
+                 }
+             }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+	
+
+   
+}
+   

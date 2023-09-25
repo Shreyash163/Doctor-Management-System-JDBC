@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.lang.Character"/>
+    <fullyQualifiedTypeName name="com.amdocs.DMS.exception.InvalidInputforDeleteException"/>
+    <fullyQualifiedTypeName name="com.amdocs.DMS.Exception.InvalidInputforAvailability"/>
+    <fullyQualifiedTypeName name="com.amdocs.DMS.Exception.InvalidInputforUpdateFees"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.amdocs.DMS.Exception.InvalidInputforCountShift"/>
+</qualifiedTypeNameHistroy>

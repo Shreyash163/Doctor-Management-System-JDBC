@@ -1,0 +1,5 @@
+package com.amdocs.DMS.model;
+
+public class DoctorEntity {
+
+}

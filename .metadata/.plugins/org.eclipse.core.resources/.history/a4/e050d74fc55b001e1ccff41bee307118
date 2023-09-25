@@ -1,0 +1,7 @@
+package com.amdocs.DMS.exception;
+
+public class UserException {
+	
+	
+
+}

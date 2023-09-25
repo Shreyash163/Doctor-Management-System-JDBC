@@ -1,0 +1,32 @@
+package com.amdocs.DBConnection;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class DoctorFunctions {
+	static Connection con;
+	 public static void addDoctor( Connection con ,Scanner scanner) throws SQLException {
+	        System.out.print("Enter doctor's name: ");
+	        String name = scanner.nextLine();
+	        System.out.print("Enter doctor's specialization: ");
+	        String specialization = scanner.nextLine();
+	        System.out.print("Enter doctor's availability: ");
+	        String availability = scanner.nextLine();
+	        System.out.print("Enter doctor's consultation fees: ");
+	        double fees = scanner.nextDouble();
+	        
+	        PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO doctors (name, specialization, availability, fees) VALUES (?, ?, ?, ?)");
+	        preparedStatement.setString(1, name);
+	        preparedStatement.setString(2, specialization);
+	        preparedStatement.setString(3, availability);
+	        preparedStatement.setDouble(4, fees);
+	        
+	        int rowsAffected = preparedStatement.executeUpdate();
+	        if (rowsAffected > 0) {
+	            System.out.println("Doctor added successfully!");
+	        } else {
+	            System.out.println("Failed to add doctor.");
+	        }
+	    }
+}

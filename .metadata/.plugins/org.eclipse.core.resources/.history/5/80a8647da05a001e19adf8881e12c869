@@ -1,0 +1,38 @@
+package com.amdocs.DBConnection;
+
+import java.sql.*;
+
+public class DbConnection 
+{
+	Connection con;
+	Statement st;
+	ResultSet rs;
+	public DbConnection() throws Exception
+	{		try {
+			System.out.println("Inside Make Connection2");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection("Jdbc:Oracle:thin:@localhost:1521:orcl","scott","tiger");
+			System.out.println("after con statement");
+			st = con.createStatement();
+			System.out.println("connection estanblished");
+			rs=st.executeQuery("Select EMPLOYEE_ID,FIRST_NAME from employees");
+			System.out.println("after select");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+" "+rs.getString(2));		
+			}
+				
+			st.close();
+			con.close();
+	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+			
+		
+		
+		
+	}
+
+}
