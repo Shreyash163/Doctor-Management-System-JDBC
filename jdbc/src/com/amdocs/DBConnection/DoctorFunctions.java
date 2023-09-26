@@ -93,17 +93,18 @@ public class DoctorFunctions
 		 
 	 public static void searchDoctorsByAvailability( String checkShift) throws InvalidInputforAvailability
 	 {
-		 if(checkShift!="Morning" || checkShift!="Evening")
+		 if((!checkShift.equals(checkShift)))  
 		 {
-			 throw new InvalidInputforAvailability("Entered value is not among Morning or Evening , Please Correct the Input");
+			 throw new InvalidInputforAvailability("Entered value is not among Morning , Please Correct the Input");
 		 }
-		 String search = "Select * from DoctorInfo where availability = ?";
+		
+		 String search = "Select * from DoctorInfo where UPPER(availability) = UPPER(?)";
 		 
 		 try {
 			 
 			 PreparedStatement st = con1.prepareStatement(search);
 			
-			 st.setString(1, checkShift); // Set the availability parameter
+			 st.setString(1, checkShift.toUpperCase()); // Set the availability parameter
 
 			 ResultSet resultSet = st.executeQuery();
 			 while (resultSet.next()) {
@@ -128,7 +129,7 @@ public class DoctorFunctions
 	 
 	 public static void CountDocShift( String countDocShift) throws InvalidInputforCountShift
 	 {
-		 if(countDocShift!="Morning" || countDocShift!="Evening")
+		 if(!(countDocShift.equals(countDocShift)))
 		 {
 			 throw new InvalidInputforCountShift("Entered value is not among Morning or Evening , Please Correct the Input");
 		 }
@@ -185,6 +186,8 @@ public class DoctorFunctions
 		  
 		 
 	 }
+	 
+	
 	 public static void CloseConnection()
 	  {
 		  try {

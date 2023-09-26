@@ -1,14 +1,16 @@
 package com.amdocs.DMS.main;
 import  com.amdocs.DBConnection.DoctorFunctions;
+import com.amdocs.DMS.Exception.InvalidInputforMenuSelect;
 import com.amdocs.DMS.model.DoctorEntity;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 
 public class Main {
 	
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
     	
 		
     	
@@ -25,11 +27,21 @@ public class Main {
                  System.out.println("3. Search Doctors by Availability");
                  System.out.println("4. Remove Doctor Information");
                  System.out.println("5. Count Number of Doctor By Shift");
-                 System.out.println("6.Update doctor Fees");
+                 System.out.println("6. Update doctor Fees");
                  System.out.println("7. Exit");
                  System.out.print("Select an option: ");
                  int choice = scanner.nextInt();
                  scanner.nextLine(); // Consume the newline character
+                 
+                 if(choice<=0)
+                 {
+                	 throw new InvalidInputforMenuSelect("Given value is less than 0 , please select greater than 0");
+                 }
+                 else if((choice*0!=0))
+                 {
+                	 throw new InvalidInputforMenuSelect("Given value is not integer");
+
+                 }
                  
                  switch (choice) {
                      case 1:
@@ -75,6 +87,8 @@ public class Main {
                 		 docFees = scanner.nextDouble();
                     	 DoctorFunctions.UpdateFees( id , docFees);
                          return;
+                        
+                    
                      case 7:
                     	 DoctorFunctions.CloseConnection();
                          System.out.println("Exiting...");
@@ -88,13 +102,18 @@ public class Main {
              }
             
             
-        } catch (Exception e) {
+        } 
+        
+        catch (InvalidInputforMenuSelect b)
+        {
+        	System.out.println(b);
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-	
-
+    
    
 }
    
